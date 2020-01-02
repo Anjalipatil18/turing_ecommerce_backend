@@ -1,11 +1,10 @@
 const express = require('express')
 const department = express.Router()
 department.use(express.json())
-
-const departmentInsert = require('../Model/departmentInsert')
+const departmentInsert = require('../Model/knex.js')
 
 department.get('/get',(req,res)=>{
-    let response = departmentInsert.getDepartment()
+    let response = departmentInsert.selectData()
     response.then((result)=>{
         res.json(result)
     }).catch((err)=>{
