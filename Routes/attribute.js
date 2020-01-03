@@ -32,14 +32,14 @@ attribute.get("/values/:attribute_id",(req,res)=>{
     })  
 });
 
-// categories.get("/inDepartment/:department_id",(req,res)=>{
-//     let department_id=req.params.department_id
-//     let response=getcategories.joinTable(department_id)
-//     .then((data)=>{
-//         res.send(data)
-//     }).catch((err)=>{
-//         res.send(err)
-//     })  
-// });
+attribute.get("/inProduct/:product_id",(req,res)=>{
+    let product_id=req.params.product_id
+    let response=getcategories.multipleTable(product_id)
+    .then((data)=>{
+        res.send(data)
+    }).catch((err)=>{
+        res.send(err)
+    })  
+});
 
 module.exports=attribute

@@ -11,11 +11,11 @@ const options = {
 const knex = require('knex')(options);
 
 let selectData = (user_data)=>{
-    return knex.select("*").from("attribute")
+    return knex.select("*").from("tax")
 }
 
 let selectDataById=(id)=>{
-    return knex.select("*").from("attribute").where("attribute_id",id)
+    return knex.select("*").from("tax").where("tax_id",id)
 }
 
 

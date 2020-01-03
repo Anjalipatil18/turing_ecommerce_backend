@@ -22,8 +22,8 @@ let innerJoinData=(attribute_id)=>{
     return knex.select('attribute_value.attribute_value_id','attribute_value.value').from('attribute').innerJoin('attribute_value').where('attribute.attribute_id',attribute_id)
 }
 
-// let joinTable=(department_id)=>{
-//     return knex.select('name','department_id','category.description','category.category_id').from('category').innerJoin('product_category').where("department_id",department_id)
-// }
+let multipleTable=(product_id)=>{
+    return knex.select('attribute_value.attribute_value_id','attribute_value.value','attribute.name').from('product_attribute').innerJoin('attribute_value').innerJoin('attribute').where('product_id',product_id)
+}
 
-module.exports={selectData,selectDataById,innerJoinData}
+module.exports={selectData,selectDataById,innerJoinData,multipleTable}
