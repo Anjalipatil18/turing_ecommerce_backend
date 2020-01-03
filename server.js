@@ -6,16 +6,19 @@ const category = require("./Model/categories")
 const attribute = require("./Model/attribute")
 
 const department = require('./Routes/department')
-app.use("/departments",department);
+app.use("/",department);
 
 const categories = require('./Routes/categories ')
-app.use("/categories",categories)
+app.use("/",categories)
 
 const attributes = require('./Routes/attribute')
-app.use("/attributes",attributes)
+app.use("/",attributes)
+
+const products = require('./Routes/products')
+app.use("/",products)
 
 const tax = require('./Routes/tax')
-app.use("/tax",tax)
+app.use("/",tax)
 
 app.listen(2000,()=>{
     console.log("server is listening 2000.........")
