@@ -22,9 +22,9 @@ attribute.get('/attributes/:attribute_id',(req,res)=>{
     });
 })
 
-attribute.get("/inProduct/:product_id",(req,res)=>{
-    let product_id=req.params.product_id
-    let response=getcategories.innerJoinData(product_id)
+attribute.get("/values/:attribute_id",(req,res)=>{
+    let attribute_id=req.params.attribute_id
+    let response=getcategories.innerJoinData(attribute_id)
     .then((data)=>{
         res.send(data)
     }).catch((err)=>{
