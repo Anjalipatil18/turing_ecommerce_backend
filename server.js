@@ -14,6 +14,9 @@ app.use("/categories",categories)
 const attributes = require('./Routes/attribute')
 app.use("/attributes",attributes)
 
+const tax = require('./Routes/tax')
+app.use("/tax",tax)
+
 app.listen(2000,()=>{
     console.log("server is listening 2000.........")
 });
