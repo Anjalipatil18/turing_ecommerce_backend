@@ -3,7 +3,7 @@ const department = express.Router()
 department.use(express.json())
 const getDepartment = require('../Model/knex.js')
 
-department.get('/get',(req,res)=>{
+department.get('/departments',(req,res)=>{
     let response = getDepartment.selectData()
     response.then((result)=>{
         res.json(result)
@@ -12,9 +12,9 @@ department.get('/get',(req,res)=>{
     });
 })
 
-department.get('/getDataById/:id',(req,res)=>{
-    var id=req.params.id
-    let response = getDepartment.selectDataById(id)
+department.get('/departments/:department_id',(req,res)=>{
+    var department_id=req.params.department_id
+    let response = getDepartment.selectDataById(department_id)
     response.then((result)=>{
         res.json(result)
     }).catch((err)=>{

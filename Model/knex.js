@@ -10,7 +10,12 @@ const options = {
 
 const knex = require('knex')(options);
 
-selectData = (user_data)=>{
+let selectData = (user_data)=>{
     return knex.select("*").from("department")
 }
-module.exports={selectData}
+
+let selectDataById=(id)=>{
+    return knex.select("*").from("department").where("department_id",id)
+}
+
+module.exports={selectData,selectDataById}
