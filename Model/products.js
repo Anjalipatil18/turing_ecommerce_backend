@@ -14,18 +14,17 @@ let selectData = ()=>{
     return knex.select("*").from("product")
 }
 
-// let getDatabyname = (limit,name,description_length)=>{
-//     return knex.from("product").limit(limit).where("name",name).where(('description', 'like', description_length))
-// }
-
-let getDatabyname = (description_length,limit)=>{
-    return knex.from("product").string('description',[description_length])
+let getDatabyname = (limit,name)=>{
+    return knex.from("product").limit(limit).where("name",name)
 }
 
 let selectDataById=(product_id)=>{
     return knex.select("*").from("product").where("product_id",product_id)
 }
 
-module.exports={selectData,getDatabyname,selectDataById}
+let innerJoinData=(category_id)=>{
+    return knex.select('product').innerJoin('category').where("category.category_id",category_id)
+}
 
-// table.string(name, [length])
+module.exports={selectData,getDatabyname,selectDataById,innerJoinData}
+
