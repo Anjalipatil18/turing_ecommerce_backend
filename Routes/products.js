@@ -104,6 +104,14 @@ products.post('/products/:product_id/reviews',(req,res)=>{
     });
     });
 
-
+products.get('/products/:product_id/reviews',(req,res)=>{
+    var product_id=req.params.product_id
+    let response = getProducts.getReviews(product_id)
+    response.then((result)=>{
+        res.json(result)
+    }).catch((err)=>{
+        res.send(err)
+    });
+})
 
 module.exports=products

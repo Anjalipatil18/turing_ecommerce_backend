@@ -42,4 +42,8 @@ let reviews = (productDetails)=>{
     return knex('review').insert(productDetails)
 }
 
-module.exports={selectData,getDatabyname,selectDataById,innerJoinData,JoinData,Data,location,reviews}
+let getReviews = (product_id)=>{
+    return knex.select('product.name','review','rating','created_on').from('product').innerJoin('review').where('product.product_id',product_id)
+}
+
+module.exports={selectData,getDatabyname,selectDataById,innerJoinData,JoinData,Data,location,reviews,getReviews}
