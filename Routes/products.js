@@ -57,4 +57,15 @@ products.get('/products/inCategory/:category_id',(req,res)=>{
     });
 })
 
+products.get('/products/inDepartment/:department_id',(req,res)=>{
+    var department_id=req.params.department_id
+    let response = getProducts.innerJoinData(department_id)
+    response.then((result)=>{
+        res.json(result)
+    }).catch((err)=>{
+        res.send(err)
+    });
+})
+
+
 module.exports=products
