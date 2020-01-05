@@ -34,7 +34,9 @@ let Data=(product_id)=>{
     return knex.select('product_id','name','price','description','discounted_price','image','image_2',).from("product").where("product_id",product_id)
 }
 
+let location=(product_id)=>{
+    return knex.select('department.department_id','category.name as category_name','category.category_id',' department.name as department_name' ).from("product").innerJoin('category').innerJoin('department').where("product_id",product_id)
+}
 
 
-module.exports={selectData,getDatabyname,selectDataById,innerJoinData,JoinData,Data}
-
+module.exports={selectData,getDatabyname,selectDataById,innerJoinData,JoinData,Data,location}

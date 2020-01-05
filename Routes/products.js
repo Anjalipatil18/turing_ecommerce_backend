@@ -76,4 +76,15 @@ products.get('/products/:product_id/details',(req,res)=>{
         res.send(err)
     });
 })
+
+products.get('/products/:product_id/locations',(req,res)=>{
+    var product_id=req.params.product_id
+    let response = getProducts.location(product_id)
+    response.then((result)=>{
+        res.json(result)
+    }).catch((err)=>{
+        res.send(err)
+    });
+})
+
 module.exports=products
