@@ -47,7 +47,7 @@ products.get('/products/:products_id',(req,res)=>{
     });
 })
 
-products.get('/products/:inCategory/:category_id',(req,res)=>{
+products.get('/products/inCategory/:category_id',(req,res)=>{
     var category_id=req.params.category_id
     let response = getProducts.innerJoinData(category_id)
     response.then((result)=>{

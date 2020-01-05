@@ -23,7 +23,7 @@ let selectDataById=(product_id)=>{
 }
 
 let innerJoinData=(category_id)=>{
-    return knex.select('product').innerJoin('category').where("category.category_id",category_id)
+    return knex.select('product_id','product.name','price','product.description','discounted_price','thumbnail').from("product").innerJoin('category').where("category.category_id",category_id)
 }
 
 module.exports={selectData,getDatabyname,selectDataById,innerJoinData}
