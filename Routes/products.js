@@ -59,7 +59,7 @@ products.get('/products/inCategory/:category_id',(req,res)=>{
 
 products.get('/products/inDepartment/:department_id',(req,res)=>{
     var department_id=req.params.department_id
-    let response = getProducts.innerJoinData(department_id)
+    let response = getProducts.JoinData(department_id)
     response.then((result)=>{
         res.json(result)
     }).catch((err)=>{
@@ -67,5 +67,13 @@ products.get('/products/inDepartment/:department_id',(req,res)=>{
     });
 })
 
-
+products.get('/products/:product_id/details',(req,res)=>{
+    var product_id=req.params.product_id
+    let response = getProducts.Data(product_id)
+    response.then((result)=>{
+        res.json(result)
+    }).catch((err)=>{
+        res.send(err)
+    });
+})
 module.exports=products
