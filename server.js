@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 app.use(express.json())
-const knex = require("./Model/knex.js")
+const knex = require("./Model/department.js")
 const category = require("./Model/categories")
 const attribute = require("./Model/attribute")
 

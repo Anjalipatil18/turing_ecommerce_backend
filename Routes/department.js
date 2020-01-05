@@ -1,7 +1,7 @@
 const express = require('express')
 const department = express.Router()
 department.use(express.json())
-const getDepartment = require('../Model/knex.js')
+const getDepartment = require('../Model/department.js')
 
 department.get('/departments',(req,res)=>{
     let response = getDepartment.selectData()
