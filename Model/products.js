@@ -38,5 +38,8 @@ let location=(product_id)=>{
     return knex.select('department.department_id','category.name as category_name','category.category_id',' department.name as department_name' ).from("product").innerJoin('category').innerJoin('department').where("product_id",product_id)
 }
 
+let reviews = (productDetails)=>{
+    return knex('review').insert(productDetails)
+}
 
-module.exports={selectData,getDatabyname,selectDataById,innerJoinData,JoinData,Data,location}
+module.exports={selectData,getDatabyname,selectDataById,innerJoinData,JoinData,Data,location,reviews}
