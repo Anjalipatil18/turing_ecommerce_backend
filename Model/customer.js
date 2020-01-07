@@ -19,7 +19,7 @@ let selectData = ()=>{
 }
 
 let putCustomer = (updateCustomerDetails)=>{
-    return knex('customer').insert(updateCustomerDetails)
+    return knex('customer').update(updateCustomerDetails)
 }
 
 

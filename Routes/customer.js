@@ -37,11 +37,18 @@ customer.get('/customers',(req,res)=>{
     });
 })
 
-customer.put('/customer',(req,res)=>{
-    
-    let response = getcustomer.selectData()
+customer.put('/customers',(req,res)=>{
+    let updateCutomerDetails={
+        name:req.body.name,
+        email:req.body.email,
+        password:req.body.password,
+        day_phone:req.body.day_phone,
+        eve_phone:req.body.eve_phone,
+        mob_phone:req.body.mob_phone
+    }
+    let response = getcustomer.putCustomer(updateCutomerDetails)
     response.then((result)=>{
-        res.json(result)
+        res.json("table updated!...")
     }).catch((err)=>{
         res.send(err)
     });
