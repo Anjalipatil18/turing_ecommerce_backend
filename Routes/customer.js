@@ -114,6 +114,8 @@ customer.put('/customers/creditCard',(req,res)=>{
     })
 })
 
-
+customer.post('/customers/facebook',(req,res)=>{
+    
+});
 
 module.exports=customer
