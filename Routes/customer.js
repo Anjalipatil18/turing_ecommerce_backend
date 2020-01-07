@@ -67,27 +67,51 @@ customer.post('/customers/login',(req,res)=>{
                     res.cookie(token)
                     res.send("It's correct!")
                 }
-            }res.send("It's Incorrect")
+            }
         })  
 });
 
 customer.put('/customers/address',(req,res)=>{  
-    let customer_id = req.body.customer_id;
-    let updateCutomerDetails={
-        address_1:req.body.address_1,
-        address_2:req.body.address_2,
-        city:req.body.city,
-        region:req.body.region,
-        postal_code:req.body.postal_code,
-        country:req.body.country,
-        shipping_region_id:req.body.shipping_region_id
-    }
-    let response = getcustomer.putAddressCustomer(updateCutomerDetails,customer_id)
-    response.then((result)=>{
-        res.json(result)
-    }).catch((err)=>{
-        res.send(err)
-    });
+    let data = req.headers.cookie
+    let splitToken=data.split("=undefined; ")
+    let alltoken = splitToken[splitToken.length -2]
+    jwt.verify(alltoken, 'Anjali', (err,data) => {
+        res.send(data)
+        let updateCutomerDetails={
+            address_1:req.body.address_1,
+            address_2:req.body.address_2,
+            customer_id:req.body.customer_id,
+            city:req.body.city,
+            region:req.body.region,
+            postal_code:req.body.postal_code,
+            country:req.body.country,
+            shipping_region_id:req.body.shipping_region_id
+        }
+        let response = getcustomer.putAddressCustomer(updateCutomerDetails,customer_id)
+        response.then((result)=>{
+            res.json(result)
+        }).catch((err)=>{
+            res.send(err)
+        });
+    })
+})
+
+customer.put('/customers/creditCard',(req,res)=>{  
+    let customer_id=req.body.customer_id
+    let data = req.headers.cookie
+    let splitToken=data.split("=undefined; ")
+    let alltoken = splitToken[splitToken.length -2]
+    jwt.verify(alltoken, 'Anjali', (err,data) => {
+        let updateCutomerDetails={
+            credit_card:req.body.credit_card
+        }
+        let response = getcustomer.putCreditCardCustomer(updateCutomerDetails,customer_id)
+        response.then((result)=>{
+            res.json(result)
+        }).catch((err)=>{
+            res.send(err)
+        });
+    })
 })
 
 

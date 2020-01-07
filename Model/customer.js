@@ -30,4 +30,8 @@ let putAddressCustomer=(updateCustomerAddressDetails,customer_id)=>{
     return knex('customer').update(updateCustomerAddressDetails).where("customer_id",customer_id)
 }
 
-module.exports={customer,selectData,putCustomer,login,putAddressCustomer}
+let putCreditCardCustomer=(updateCustomer,customer_id)=>{
+    return knex('customer').update(updateCustomer).where("customer_id",customer_id)
+}
+
+module.exports={customer,selectData,putCustomer,login,putAddressCustomer,putCreditCardCustomer}
