@@ -94,7 +94,7 @@ products.post('/products/:product_id/reviews',(req,res)=>{
         product_id:product_id, 
         review:req.body.review, 
         rating:req.body.rating,
-        created_on:new.Date()
+        created_on:req.body.created_on
     }
 
     let response = getProducts.reviews(productReviews)

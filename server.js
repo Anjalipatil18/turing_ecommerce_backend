@@ -17,6 +17,9 @@ app.use("/",attributes)
 const products = require('./Routes/products')
 app.use("/",products)
 
+const customers = require('./Routes/customer')
+app.use("/",customers)
+
 const tax = require('./Routes/tax')
 app.use("/",tax)
 
