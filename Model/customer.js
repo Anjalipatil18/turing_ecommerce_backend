@@ -21,6 +21,8 @@ let selectData = ()=>{
 let putCustomer = (updateCustomerDetails)=>{
     return knex('customer').update(updateCustomerDetails)
 }
+let login = ()=>{
+    return knex.select('*').from('customer')
+}
 
-
-module.exports={customer,selectData,putCustomer}
+module.exports={customer,selectData,putCustomer,login}

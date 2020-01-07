@@ -2,6 +2,7 @@ const express = require('express')
 const customer = express.Router()
 customer.use(express.json())
 const getcustomer = require("../Model/customer")
+const jwt = require('jsonwebtoken')
 
 customer.post('/customers',(req,res)=>{
     var customerDetails = {
@@ -53,5 +54,23 @@ customer.put('/customers',(req,res)=>{
         res.send(err)
     });
 })
+
+customer.post('/customers/login',(req,res)=>{
+        let email=req.body.email 
+        let password=req.body.password 
+        let response = getcustomer.login()
+        response.then((result)=>{
+            for(let i=0; i<result.length; i++){
+                if((result[i]["email"]==email) && (result[i]["password"]==password)){
+                    let token=jwt.sign({"user":result},'Anjali')
+                    res.cookie(token)
+                    res.send("It's correct!")
+                // }else{
+                //     res.send("It's Incorrect")
+                }
+            }
+        })  
+});
+
 
 module.exports=customer
