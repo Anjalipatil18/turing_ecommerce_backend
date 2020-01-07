@@ -16,6 +16,7 @@ let customer = (customerDetails)=>{
 
 let selectData = ()=>{
     return knex.select("*").from("customer")
+
 }
 
 let putCustomer = (updateCustomerDetails,customer_id)=>{

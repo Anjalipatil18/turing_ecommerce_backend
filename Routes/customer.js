@@ -66,10 +66,8 @@ customer.post('/customers/login',(req,res)=>{
                     let token=jwt.sign({"user":result},'Anjali')
                     res.cookie(token)
                     res.send("It's correct!")
-                // }else{
-                //     res.send("It's Incorrect")
                 }
-            }
+            }res.send("It's Incorrect")
         })  
 });
 
