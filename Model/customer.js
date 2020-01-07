@@ -18,11 +18,15 @@ let selectData = ()=>{
     return knex.select("*").from("customer")
 }
 
-let putCustomer = (updateCustomerDetails)=>{
-    return knex('customer').update(updateCustomerDetails)
+let putCustomer = (updateCustomerDetails,customer_id)=>{
+    return knex('customer').update(updateCustomerDetails).where("customer_id",customer_id)
 }
 let login = ()=>{
     return knex.select('*').from('customer')
 }
 
-module.exports={customer,selectData,putCustomer,login}
+let putAddressCustomer=(updateCustomerAddressDetails,customer_id)=>{
+    return knex('customer').update(updateCustomerAddressDetails).where("customer_id",customer_id)
+}
+
+module.exports={customer,selectData,putCustomer,login,putAddressCustomer}

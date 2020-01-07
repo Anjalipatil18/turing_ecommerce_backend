@@ -39,6 +39,7 @@ customer.get('/customers',(req,res)=>{
 })
 
 customer.put('/customers',(req,res)=>{
+    let customer_id=req.body.customer_id;
     let updateCutomerDetails={
         name:req.body.name,
         email:req.body.email,
@@ -47,7 +48,7 @@ customer.put('/customers',(req,res)=>{
         eve_phone:req.body.eve_phone,
         mob_phone:req.body.mob_phone
     }
-    let response = getcustomer.putCustomer(updateCutomerDetails)
+    let response = getcustomer.putCustomer(updateCutomerDetails,customer_id)
     response.then((result)=>{
         res.json("table updated!...")
     }).catch((err)=>{
@@ -71,6 +72,26 @@ customer.post('/customers/login',(req,res)=>{
             }
         })  
 });
+
+customer.put('/customers/address',(req,res)=>{  
+    let customer_id = req.body.customer_id;
+    let updateCutomerDetails={
+        address_1:req.body.address_1,
+        address_2:req.body.address_2,
+        city:req.body.city,
+        region:req.body.region,
+        postal_code:req.body.postal_code,
+        country:req.body.country,
+        shipping_region_id:req.body.shipping_region_id
+    }
+    let response = getcustomer.putAddressCustomer(updateCutomerDetails,customer_id)
+    response.then((result)=>{
+        res.json(result)
+    }).catch((err)=>{
+        res.send(err)
+    });
+})
+
 
 
 module.exports=customer
