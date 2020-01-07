@@ -18,4 +18,9 @@ let selectData = ()=>{
     return knex.select("*").from("customer")
 }
 
-module.exports={customer,selectData}
+let putCustomer = (updateCustomerDetails)=>{
+    return knex('customer').insert(updateCustomerDetails)
+}
+
+
+module.exports={customer,selectData,putCustomer}

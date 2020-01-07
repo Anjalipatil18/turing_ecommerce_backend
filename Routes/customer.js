@@ -37,4 +37,14 @@ customer.get('/customers',(req,res)=>{
     });
 })
 
+customer.put('/customer',(req,res)=>{
+    
+    let response = getcustomer.selectData()
+    response.then((result)=>{
+        res.json(result)
+    }).catch((err)=>{
+        res.send(err)
+    });
+})
+
 module.exports=customer
