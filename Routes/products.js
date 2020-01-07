@@ -89,13 +89,14 @@ products.get('/products/:product_id/locations',(req,res)=>{
 
 products.post('/products/:product_id/reviews',(req,res)=>{
     var product_id=req.params.product_id
-    var  productReviews = {
+    var productReviews = {
         customer_id:req.body.customer_id,
         product_id:product_id, 
         review:req.body.review, 
         rating:req.body.rating,
-        created_on:req.body.created_on
+        created_on:new.Date()
     }
+
     let response = getProducts.reviews(productReviews)
     response.then((result)=>{
         return res.json(result);
