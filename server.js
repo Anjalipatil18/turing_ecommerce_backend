@@ -23,6 +23,9 @@ app.use("/",customers)
 const tax = require('./Routes/tax')
 app.use("/",tax)
 
+const shipping = require('./Routes/shipping')
+app.use("/",shipping)
+
 app.listen(2000,()=>{
     console.log("server is listening 2000.........")
 });
