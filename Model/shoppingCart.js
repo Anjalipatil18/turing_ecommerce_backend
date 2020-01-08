@@ -14,8 +14,8 @@ let selectData = (generateUniqueId,cart_id)=>{
     return knex("shopping_cart").where("cart_id",cart_id)
 }
 
-let selectDataById=(id)=>{
-    return knex.select("*").from("shopping_cart").where("shopping_cart_id",id)
+let selectDataById=(addData)=>{
+    return knex.from("shopping_cart").insert(addData)
 }
 
 module.exports={selectData,selectDataById}

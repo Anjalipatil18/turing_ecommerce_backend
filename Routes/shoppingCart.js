@@ -18,22 +18,21 @@ shoppingCart.get('/shoppingCart/generateUniqueId',(req,res)=>{
     });
 })
 
-// shoppingCart.post('/products/:product_id/reviews',(req,res)=>{
-//     var product_id=req.params.product_id
-//     var productReviews = {
-//         customer_id:req.body.customer_id,
-//         product_id:product_id, 
-//         review:req.body.review, 
-//         rating:req.body.rating,
-//         created_on:req.body.created_on
-//     }
+shoppingCart.post('/shoppingCart/add',(req,res)=>{
+    var shoppingCartDetails = {
+        cart_id:req.body.cart_id,
+        product_id:req.body.product_id, 
+        attributes:req.body.attributes, 
+        quantity:req.body.quantity,
+        added_on:new Date()
+    }
 
-//     let response = getshoppingCart.reviews(productReviews)
-//     response.then((result)=>{
-//         return res.json(result);
-//     }).catch((err)=>{
-//         res.send(err)
-//     });
-// });
+    let response = getshoppingCart.selectDataById(shoppingCartDetails)
+    response.then((result)=>{
+        return res.json(result);
+    }).catch((err)=>{
+        res.send(err)
+    });
+});
 
 module.exports=shoppingCart
