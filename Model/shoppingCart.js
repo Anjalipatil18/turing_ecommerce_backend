@@ -26,4 +26,8 @@ let updateShoppingCartByItemId = (item_id)=>{
     return knex.select('*').from('shopping_cart').innerJoin('product').where("item_id",item_id)
 }
 
-module.exports={selectData,selectDataById,shoppingCartByCartId,updateShoppingCartByItemId}
+let deleteByItemId=(cart_id)=>{
+    return knex.from("shopping_cart").where("cart_id",cart_id).del()
+}
+
+module.exports={selectData,selectDataById,shoppingCartByCartId,updateShoppingCartByItemId,deleteByItemId}
