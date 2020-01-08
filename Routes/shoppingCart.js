@@ -49,7 +49,6 @@ shoppingCart.put('/shoppingCart/update/:item_id',(req,res)=>{
     let item_id=req.params.item_id;
     let response = getshoppingCart.updateShoppingCartByItemId(item_id)
     response.then((result)=>{
-        console.log(result)
         let updateShoppingCart={
         item_id : result[0]['item_id'],
         attributes : result[0]['attributes'],
@@ -73,6 +72,20 @@ shoppingCart.delete('/shoppingCart/empty/:cart_id',(req,res)=>{
     }).catch((err)=>{
         res.send(err)
     })
+})
+
+shoppingCart.get('/shoppingCart/totalAmount/:cart_id',(req,res)=>{
+    let cart_id=req.params.cart_id;
+    let response = getshoppingCart.getShoppingCartByCartId(cart_id)
+    response.then((result)=>{
+        let getShoppingCart={
+            total_amount : result[0]['price']*result[0]['quantity']
+            }
+            res.json(getShoppingCart)
+    }).catch((err)=>{
+        res.send(err)
+    })    
+
 })
 
 module.exports=shoppingCart
