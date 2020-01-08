@@ -115,9 +115,9 @@ shoppingCart.get('/shoppingCart/getSaved/:cart_id',(req,res)=>{
     })    
 })
 
-shoppingCart.delete('/shoppingCart/empty/:cart_id',(req,res)=>{
-    let cart_id=req.params.cart_id;
-    let response = getshoppingCart.deleteByItemId(cart_id)
+shoppingCart.delete('/shoppingCart/removeProduct/:item_id',(req,res)=>{
+    let item_id=req.params.item_id;
+    let response = getshoppingCart.removeProduct(item_id)
     response.then((result)=>{
         res.send("delete data!")
     }).catch((err)=>{
