@@ -45,5 +45,24 @@ shoppingCart.get('/shoppingCart/:cart_id',(req,res)=>{
     });
 })
 
+shoppingCart.put('/shoppingCart/update/:item_id',(req,res)=>{
+    let item_id=req.params.item_id;
+    let response = getshoppingCart.updateShoppingCartByItemId(item_id)
+    response.then((result)=>{
+        console.log(result)
+        let updateShoppingCart={
+        item_id : result[0]['item_id'],
+        attributes : result[0]['attributes'],
+        quantity : result[0]['quantity'],
+        product_id : result[0]['product_id'],
+        price : result[0]['price'],
+        name : result[0]['name'],
+        subtotal : result[0]['price']*result[0]['quantity']
+        }
+        res.json(updateShoppingCart)
+    }).catch((err)=>{
+        res.send(err)
+    });
+})
 
 module.exports=shoppingCart

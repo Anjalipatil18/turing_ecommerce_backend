@@ -22,6 +22,7 @@ let selectData = ()=>{
 let putCustomer = (updateCustomerDetails,customer_id)=>{
     return knex('customer').update(updateCustomerDetails).where("customer_id",customer_id)
 }
+
 let login = ()=>{
     return knex.select('*').from('customer')
 }
