@@ -35,4 +35,15 @@ shoppingCart.post('/shoppingCart/add',(req,res)=>{
     });
 });
 
+shoppingCart.get('/shoppingCart/:cart_id',(req,res)=>{
+    let cart_id = req.params.cart_id
+    let response = getshoppingCart.shoppingCartByCartId(cart_id)
+    response.then((result)=>{
+        res.json(result)
+    }).catch((err)=>{
+        res.send(err)
+    });
+})
+
+
 module.exports=shoppingCart
