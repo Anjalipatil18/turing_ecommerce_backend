@@ -143,4 +143,6 @@ shoppingCart.delete('/shoppingCart/removeProduct/:item_id',(req,res)=>{
     })
 })
 
+
+
 module.exports=shoppingCart
