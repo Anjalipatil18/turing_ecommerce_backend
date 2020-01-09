@@ -10,12 +10,12 @@ const options = {
 
 const knex = require('knex')(options);
 
-let joinData=()=>{
-    return knex.select("product.price","shopping_cart.quantity").from('product').innerJoin('shopping_cart')
+let joinData=(cart_id)=>{
+    return knex.from('shopping_cart').innerJoin('product').where("cart_id",cart_id)
 }
 
 let insertInOrders=(joinData)=>{
-    return knex.from()
+    return knex.from("orders").insert(joinData)
 }
 
-module.exports={joinData}
+module.exports={joinData,insertInOrders}

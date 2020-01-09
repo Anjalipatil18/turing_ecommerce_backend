@@ -17,6 +17,9 @@ app.use("/",products)
 const customers = require('./Routes/customer')
 app.use("/",customers)
 
+const orders = require('./Routes/orders')
+app.use("/",orders)
+
 const shoppingCart = require('./Routes/shoppingCart')
 app.use("/",shoppingCart)
 
