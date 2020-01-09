@@ -18,12 +18,12 @@ let insertInOrders=(joinData)=>{
     return knex.from("orders").insert(joinData)
 }
 
-let multipleData=(order_id)=>{
-    return knex.from('shopping_cart').innerJoin('product')
+let selectData=()=>{
+    return knex.select("*").from("orders")
 }
 
 let orderDataById=(order_id)=>{
     return knex.select("product.name","orders.total_amount","orders.shipped_on","orders.created_on","orders.status","orders.order_id").from('orders').innerJoin('product').where("order_id",order_id)
 }
 
-module.exports={joinData,insertInOrders,multipleData,orderDataById}
+module.exports={joinData,insertInOrders,selectData,orderDataById}

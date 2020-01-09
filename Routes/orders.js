@@ -30,9 +30,14 @@ orders.post('/orders',(req,res)=>{
     })
 });
 
-orders.get('/orders/:orders_id',(req,res)=>{
-    
-});
+orders.get('/orders/inCustomer',(req,res)=>{
+    let response = getOrders.selectData()
+    response.then((result)=>{
+        res.json(result)
+    }).catch((err)=>{
+        res.send(err)
+    });
+})
 
 orders.get('/orders/shortDetail/:order_id',(req,res)=>{
     let order_id = req.params.order_id
