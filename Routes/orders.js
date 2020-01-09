@@ -30,4 +30,19 @@ orders.post('/orders',(req,res)=>{
     })
 });
 
+orders.get('/orders/:orders_id',(req,res)=>{
+    
+});
+
+orders.get('/orders/shortDetail/:order_id',(req,res)=>{
+    let order_id = req.params.order_id
+    let response = getOrders.orderDataById(order_id)
+    response.then((result)=>{
+        res.json(result)
+    }).catch((err)=>{
+        res.send(err)
+    });
+})
+
+
 module.exports=orders
