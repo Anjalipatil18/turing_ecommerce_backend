@@ -105,6 +105,24 @@ shoppingCart.get('/shoppingCart/saveForLater/:item_id',(req,res)=>{
 })
 })
 
+
+shoppingCart.get('/shoppingCart/moveToCart/:item_id',(req,res)=>{
+    let item_id=req.params.item_id;
+    let response=getshoppingCart.selectforShoppingcart(item_id);
+    response.then((data)=>{
+    let inserting=getshoppingCart.insertDatainshoppingcart(data);
+    inserting.then((data)=>{
+        console.log("data inserted...")
+    let deleteData=getshoppingCart.movecartItemId(item_id)
+    deleteData.then((result)=>{
+        res.send("data deleted..");
+    }).catch((err)=>{
+        res.send(err);
+    });
+})
+})
+})
+
 shoppingCart.get('/shoppingCart/getSaved/:cart_id',(req,res)=>{
     let cart_id=req.params.cart_id;
     let response = getshoppingCart.getSavedShoppingCart(cart_id)

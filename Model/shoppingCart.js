@@ -34,7 +34,6 @@ let getShoppingCartByCartId = (cart_id)=>{
     return knex.select('*').from('shopping_cart').innerJoin('product').where("cart_id",cart_id)
 }
 
-
 let selectsaveForLater=(item_id)=>{
     return knex.select("cart_id","product_id","attributes","quantity","buy_now","added_on").from("shopping_cart").where("item_id",item_id)
 }
@@ -55,4 +54,17 @@ let removeProduct=(item_id)=>{
     return knex.from("shopping_cart").where("item_id",item_id).del()
 }
 
-module.exports={selectData,selectDataById,shoppingCartByCartId,updateShoppingCartByItemId,deleteByItemId,getShoppingCartByCartId,insertDatasaveforlater,selectsaveForLater, deletebyItemId,getSavedShoppingCart,removeProduct}
+let selectforShoppingcart=(item_id)=>{
+    return knex.select("cart_id","product_id","attributes","quantity","buy_now","added_on").from("saveForLater").where("item_id",item_id)
+}
+
+let insertDatainshoppingcart = (selectshopping_cart)=>{
+    return knex.from('shopping_cart').insert(selectshopping_cart)
+}
+
+let movecartItemId=(item_id)=>{
+    return knex.from("saveForLater").where("item_id",item_id).del()
+}
+
+
+module.exports={selectData,selectDataById,shoppingCartByCartId,updateShoppingCartByItemId,deleteByItemId,getShoppingCartByCartId,insertDatasaveforlater,selectsaveForLater, deletebyItemId,getSavedShoppingCart,removeProduct,selectforShoppingcart,insertDatainshoppingcart,movecartItemId}
