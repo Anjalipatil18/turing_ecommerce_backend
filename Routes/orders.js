@@ -30,6 +30,29 @@ orders.post('/orders',(req,res)=>{
     })
 });
 
+orders.get('/orders/:order_id',(req,res)=>{
+    let order_id=req.params.order_id;
+    let response=getOrders.getData(order_id)
+    response.then((result)=>{
+        var orderDetailData = {
+            "order_id": result[0]["order_id"],
+            "product_id": result[0]["product_id"],
+            "attributes": result[0]["attributes"],
+            "product_name": result[0]["name"],
+            "quantity": result[0]["quantity"],
+            "unit_cost": result[0]["price"] 
+        }
+        let c=getOrders.insertData(orderDetailData)
+        c.then((data)=>{
+            return res.send("data inserted");
+        })
+    .catch((err)=>{
+        res.send(err)
+    });
+})
+
+})
+
 orders.get('/orders/inCustomer',(req,res)=>{
     let response = getOrders.selectData()
     response.then((result)=>{
