@@ -1,6 +1,6 @@
 const knex=require('./knex')
 
-let selectData = (user_data)=>{
+let selectData = ()=>{
     return knex.select("*").from("tax")
 }
 
