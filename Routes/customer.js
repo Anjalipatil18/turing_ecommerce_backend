@@ -1,7 +1,7 @@
 const express = require('express')
 const customer = express.Router()
 customer.use(express.json())
-const getcustomer = require("../Model/customer")
+const getcustomer = require("../Model/customerDb")
 const jwt = require('jsonwebtoken')
 
 customer.post('/customers',(req,res)=>{
