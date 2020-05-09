@@ -14,6 +14,3 @@ knex.schema.createTable('saveForLater', (table) => {
     })
 
 .catch((err) => { console.log(err); throw err })
-.finally(() => {
-    knex.destroy();
-});
